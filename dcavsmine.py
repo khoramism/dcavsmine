@@ -1,5 +1,5 @@
 import csv
-from distutils.command.build_scripts import first_line_re 
+#from distutils.command.build_scripts import first_line_re 
 import os 
 import json 
 
@@ -21,7 +21,6 @@ def mine(price, change, amount , K, p_or_n):
     global first_price
     first_price = amount
     return amount / price 
-    
 
 prices = []
 datetimes = []
@@ -36,7 +35,7 @@ mine_shit_45 = 0
 mine_shit_50 = 0
 
 
-with open('btcss.csv') as csv_file:
+with open('bnb.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     for row in csv_reader:
         # 1 date
@@ -46,34 +45,35 @@ with open('btcss.csv') as csv_file:
         datetimes.append(row[0])
         changes.append(float(row[2]))
         
-first_price_dca = 60
-first_price_20 = 60
-first_price_25 = 60
-first_price_30 = 60
-first_price_35 = 60
-first_price_40 = 60
-first_price_45 = 60
-first_price_50 = 60
+first_price_dca = 10
+first_price_20 = 10
+first_price_25 = 10
+first_price_30 = 10
+first_price_35 = 10
+first_price_40 = 10
+first_price_45 = 10
+first_price_50 = 10
 
 for price, change in zip(prices, changes):
     dca_shit += dca(price, first_price_dca)
     #print(change > 0)
-    mine_shit_20 += mine(price, change,first_price_20, 120, change > 0)
-    mine_shit_25 += mine(price, change,first_price_25, 150, change > 0)
-    mine_shit_30 += mine(price, change,first_price_30, 180, change > 0)
-    mine_shit_35 += mine(price, change,first_price_35, 210, change > 0)
-    mine_shit_40 += mine(price, change,first_price_40, 240, change > 0)
-    mine_shit_45 += mine(price, change,first_price_45, 270, change > 0)
-    mine_shit_50 += mine(price, change,first_price_50, 300, change > 0)
+    mine_shit_20 += mine(price, change,first_price_20, 20, change > 0)
+    mine_shit_25 += mine(price, change,first_price_25, 25, change > 0)
+    mine_shit_30 += mine(price, change,first_price_30, 30, change > 0)
+    mine_shit_35 += mine(price, change,first_price_35, 35, change > 0)
+    #mine_shit_40 += mine(price, change,first_price_40, 240, change > 0)
+    #mine_shit_45 += mine(price, change,first_price_45, 270, change > 0)
+    #mine_shit_50 += mine(price, change,first_price_50, 300, change > 0)
 #for i in changes:
 #    print(i > 0, i)
-print(dca_shit * 50663
-,mine_shit_20 * 50663
-,mine_shit_25 * 50663
-,mine_shit_30 * 50663
-,mine_shit_35 * 50663
-,mine_shit_40 * 50663
-,mine_shit_45 * 50663
-,mine_shit_50 * 50663, 60*12 )
+now_price = 434
+print(dca_shit * now_price
+,mine_shit_20 * now_price
+,mine_shit_25 * now_price
+,mine_shit_30 * now_price
+,mine_shit_35 * now_price
+,mine_shit_40 * now_price
+,mine_shit_45 * now_price
+,mine_shit_50 * now_price, 10*12 )
 #print(shit)
 
