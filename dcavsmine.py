@@ -70,16 +70,17 @@ mine_shit_45 = 0
 mine_shit_50 = 0
 
 
-with open('ada-now.csv') as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=',')
+with open('ada-now.csv','r') as csv_file:
+    csv_reader = csv.reader(csv_file)
     for row in csv_reader:
+        print(row)
         # 1 date
         # 2 price 
         # 3 change
         prices.append(float(row[1]))
         datetimes.append(row[0])
         changes.append(float(row[2]))
-        
+first_price = 11.23
 first_price_dca = 11.23
 first_price_20 = 11.23
 first_price_25 = 11.23
@@ -93,7 +94,7 @@ for price, change in zip(prices, changes):
     #pass
     dca_shit += dca(price, first_price_dca)
     #print(change > 0)
-    mine_shit_20 += mine(price, change,first_price_20, 50, change > 0)
+    mine_shit_20 += mine(price, change,first_price, 50, change > 0)
     #mine_shit_25 += mine(price, change,first_price_25, 25, change > 0)
     #mine_shit_30 += mine(price, change,first_price_30, 30, change > 0)
     #mine_shit_35 += mine(price, change,first_price_35, 35, change > 0)
@@ -112,4 +113,4 @@ now_price = 45814.50
 #,mine_shit_45 * now_price
 #,mine_shit_50 * now_price, 10*365 )
 ##print(shit)
-print()
+#print()
